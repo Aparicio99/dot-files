@@ -1,1 +1,136 @@
-/home/aparicio/.alias-funcs
+### Program alias ###
+alias -s pdf=pdf
+alias -s {avi,mpeg,mpg,mov,wmv}=mplayer
+alias -s {odt,doc,rtf}=oowriter
+alias -s {jpg,png,svg,xpm,bmp,gif}=gpicview
+
+### Global Alias ###
+alias -g KEY='/etc/portage/package.keywords'
+alias -g USE='/etc/portage/package.use'
+alias -g NEW='/home/aparicio/Desktop/*(.oc[1])'
+
+### Replaces ###
+alias ls="ls --color=auto"
+alias grep='grep --colour=auto'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias wcalc='noglob wcalc'
+alias emerge='noglob emerge'
+
+### Shortcuts ###
+alias l="ls"
+alias la="ls -a"
+alias ll="ls -lhG"
+alias al="ls -lhGa"
+alias rf='rm -rf'
+alias cls='cd && echo -n "]0;${USER}@void" && clear'
+alias x="exit"
+alias s="sudo"
+alias nuke='pkill -9'
+alias untar="tar xvf"
+alias clean="make clean"
+alias remake="make clean && make"
+alias ff="find . -type f -name"
+alias psu="ps -Hc -F S f -u $USER"
+alias psall="ps -ejH"
+
+### Script ###
+alias {t,term}="/home/aparicio/scripts/uterm"
+
+### Mounts ###
+alias null="ssh aparicio@null"
+alias rnull="ssh root@null"
+#alias sigma="ssh sigma04.ist.utl.pt"
+#alias nexus="ssh nexus.rnl.ist.utl.pt"
+alias msigma="sshfs ist164724@sigma04.ist.utl.pt: /media/sigma"
+alias umsigma="fusermount -u /media/sigma"
+
+### VCS ###
+#alias up="svn update"
+#alias commit="svn commit"
+#alias log="svn log"
+#alias changelog="svn2cl --authors=AUTHORS"
+alias pull="git pull"
+alias push="git push"
+alias commit="git commit -a"
+alias log="git log"
+alias status="git status"
+
+### Gentoo ###
+alias update="emerge -uDNav"
+alias cur="genlop -c"
+alias belongs="qfile"
+alias depends="equery depends"
+
+### Hardware  ###
+alias writeiso="cdrecord -v -pad dev=/dev/cdrom"
+alias blankcd="cdrecord dev=/dev/cdrom blank=fast"
+alias bat="cat /sys/class/power_supply/BAT0/uevent"
+alias min="xbacklight -set 0 && 1000"
+alias max="xbacklight -set 100 && 2000"
+
+### More ###
+alias lf="leafpad"
+alias http="python3 -m http.server 9999"
+alias weather="curl http://weather.noaa.gov/pub/data/observations/metar/decoded/LPPT.TXT"
+alias record="script -t 2> demo.timing -a demo.session"
+alias replay="scriptreplay demo.timing demo.session"
+alias 010="setxkbmap pt"
+alias zshrc="source /home/aparicio/.zshrc"
+alias tcp="lsof -i tcp"
+alias rcp="rsync --archive --one-file-system --hard-links --human-readable --inplace --numeric-ids --delete --delete-excluded --progress --compress"
+alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
+alias distc-monitor="DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text 1"
+
+
+alias dec2bin="base 10 2"
+alias bin2dec="base 2 10"
+alias dec2hex="base 10 16"
+alias hex2dec="base 16 10"
+
+### Functions ###
+
+function base { echo "ibase=$1; obase=$2; $3" | bc }
+
+function start { /etc/init.d/$@ start }
+function stop { /etc/init.d/$@ stop }
+function restart { /etc/init.d/$@ restart }
+function pause { /etc/init.d/$@ pause }
+
+function usage() { du -skch $@ | sort -rh }
+
+function freq() {
+	cpufreq-set -f $1Mhz -c 0
+	cpufreq-set -f $1Mhz -c 1
+}
+alias 1000="freq 1000"
+alias 1333="freq 1333"
+alias 1666="freq 1666"
+alias 2000="freq 2000"
+
+function cl() { cd $@; ls }
+
+function ..() {
+	for ((j=${1:-1},i=0;i<j;i++));do
+		builtin cd ..;
+	done;
+}
+alias ..2=".. 2"
+alias ..3=".. 3"
+alias ..4=".. 4"
+alias ..5=".. 5"
+alias ...=".. 2"
+alias ....=".. 3"
+
+youtube-mp3() {
+	url=$1
+	file=$(youtube-dl -s -e $url);
+	echo "Downloading $file"
+	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
+}
+
+pdf()		{ epdfview "$@" 2> /dev/null }
+unix2date()	{ date -ud@$@}
+date2unix()	{ date +%s --date="$@"}
+wiki()		{ dig +short txt $1.wp.dg.cx }
