@@ -22,6 +22,8 @@ command W write
 command Q quit
 command Wq wq
 command WQ wq
+command Qa qa
+command QA qa
 command Noh noh
 command Set set
 command Sudo w !sudo tee %

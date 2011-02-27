@@ -130,7 +130,7 @@ compdef complete_pk pk
 compdef complete_base base
 compdef complete_freq freq
 compdef pkill=killall
-compdef _services start stop restart
+compdef _services start stop restart toggle
 compdef _pdf pdf zathura epdfview
 compdef '_values options on off toggle' mouse
 compdef '_files -g "*.aes"' dec
