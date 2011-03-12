@@ -15,6 +15,7 @@ if version >= 703
 	set undodir^=$HOME/.vim_tmp/
 endif
 
+" ~/.vimrc[+]  unix utf-8 vim                                                           22,22  47/75  62%
 set statusline=%F%m%r%h%w\ \ %{&ff}\ %{&fenc}\ %{&ft}%=%c,%v\ \ %l/%L\ \ %p%%\ 
 
 " Alias
