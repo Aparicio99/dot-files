@@ -11,7 +11,8 @@ source $HOME/.alias-funcs
 
 bindkey -e # Emacs mode
 
-source $HOME/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
+#source $HOME/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
+source $HOME/.zkbd/$TERM
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
 [[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
 [[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
