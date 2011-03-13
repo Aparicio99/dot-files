@@ -38,14 +38,6 @@ alias psall="ps -ejH"
 ### Script ###
 alias {t,term}="/home/aparicio/scripts/uterm"
 
-### Mounts ###
-alias null="ssh aparicio@null"
-alias rnull="ssh root@null"
-#alias sigma="ssh sigma04.ist.utl.pt"
-#alias nexus="ssh nexus.rnl.ist.utl.pt"
-alias msigma="sshfs ist164724@sigma04.ist.utl.pt: /media/sigma"
-alias umsigma="fusermount -u /media/sigma"
-
 ### VCS ###
 #alias up="svn update"
 #alias commit="svn commit"

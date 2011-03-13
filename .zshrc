@@ -8,6 +8,7 @@ setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist
 ##### External files #####
 source /etc/profile
 source $HOME/.alias-funcs
+source $HOME/.pvt-alias
 
 bindkey -e # Emacs mode
 
