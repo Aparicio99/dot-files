@@ -9,24 +9,25 @@ TEXT
  Uptime ${color yellow}$uptime  ${color}Kernel ${color yellow}$kernel$color
  Battery ${color green}${battery_bar 0, 37 BAT0}${color yellow} $battery_percent%$color
  Hostname ${color yellow}${nodename}  ${color}AC ${color yellow}${acpiacadapter ADP1}  ${color}Temp ${color yellow}${acpitemp}C$color
- 
+
  Load ${color yellow}$loadavg  ${color}Procs ${color yellow}$running_processes/$processes$color
  Cpu1 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%$color
  Cpu2 ${color red}${cpubar cpu2 3, 36} ${color yellow}${freq_g 2} ${cpu cpu2}%
  ${top name 1}${top cpu 1}    ${top mem_res 1}
  ${top name 2}${top cpu 2}    ${top mem_res 2}
  ${top name 3}${top cpu 3}    ${top mem_res 3}$color
- 
+
  Mem ${color red}${membar 3,31}$color ${color yellow}$mem/$memmax $memperc%
  ${top_mem name 1}${top_mem mem 1}    ${top_mem mem_res 1}
  ${top_mem name 2}${top_mem mem 2}    ${top_mem mem_res 2}
  ${top_mem name 3}${top_mem mem 3}    ${top_mem mem_res 3}$color
- 
+
  Root ${color green}${fs_bar 3,29 /} ${color yellow}${fs_used /}/${fs_size /} ${fs_used_perc /}%$color
  Home ${color green}${fs_bar 3,29 /home} ${color yellow}${fs_used /home}/${fs_size /home} ${fs_used_perc /home}%$color
  Read ${color yellow}${diskio_read sda}  ${color}Write ${color yellow}${diskio_write sda}$color
- 
- Wlan ${color green}${wireless_link_bar 3, 23 wlan0} ${color yellow} ${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}$color
- Up ${color yellow}${upspeed wlan0}  ${color}Down ${color yellow}${downspeed wlan0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}  ${color}Ip ${color yellow}${addrs wlan0}$color
- 
+${if_up wlan0}
+ Wireless ${color green}${wireless_link_bar 3, 19 wlan0} ${color yellow} ${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}$color
+ wlan0 ${color yellow}${addrs wlan0}$color  Up ${color yellow}${upspeed wlan0}$color  Down ${color yellow}${downspeed wlan0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}${if_up eth0}
+ eth0  ${color yellow}${addrs eth0}$color  Up ${color yellow}${upspeed eth0}$color  Down ${color yellow}${downspeed eth0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color
+ ${endif}
  Portage Sync ${color yellow}${execi 300 ~/scripts/lastsync days}  ${color}Update ${color yellow}${execi 300 ~/scripts/lastupdate days}$color
