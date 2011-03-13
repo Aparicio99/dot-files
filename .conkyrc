@@ -6,13 +6,13 @@ default_bar_size 50 0
 short_units yes
 TEXT
 
- Uptime ${color yellow}$uptime  ${color}Kernel ${color yellow}$kernel$color${if_existing /sys/class/power_supply/BAT0/uevent}
+ Uptime ${color yellow}$uptime$color  Kernel ${color yellow}$kernel$color${if_existing /sys/class/power_supply/BAT0/uevent}
  Battery ${color green}${battery_bar 0, 37 BAT0}${color yellow} $battery_percent%$color$endif
- Hostname ${color yellow}${nodename}  ${color}AC ${color yellow}${acpiacadapter ADP1}  ${color}Temp ${color yellow}${acpitemp}C$color
+ Hostname ${color yellow}$nodename$color  Temp ${color yellow}${acpitemp}C$color  ${if_existing /proc/acpi/ac_adapterADP1/state}AC ${color yellow}${acpiacadapter ADP1}$color$endif
 
- Load ${color yellow}$loadavg  ${color}Procs ${color yellow}$running_processes/$processes$color
- Cpu1 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%$color
- Cpu2 ${color red}${cpubar cpu2 3, 36} ${color yellow}${freq_g 2} ${cpu cpu2}%
+ Load ${color yellow}$loadavg$color  Procs ${color yellow}$running_processes/$processes$color
+ Cpu0 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%$color${if_existing /sys/class/cpuid/cpu1}
+ Cpu1 ${color red}${cpubar cpu2 3, 36} ${color yellow}${freq_g 2} ${cpu cpu2}%$endif
  ${top name 1}${top cpu 1}    ${top mem_res 1}
  ${top name 2}${top cpu 2}    ${top mem_res 2}
  ${top name 3}${top cpu 3}    ${top mem_res 3}$color
