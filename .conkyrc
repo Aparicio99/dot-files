@@ -8,7 +8,7 @@ TEXT
 
  Uptime ${color yellow}$uptime$color  Kernel ${color yellow}$kernel$color${if_existing /sys/class/power_supply/BAT0/uevent}
  Battery ${color green}${battery_bar 0, 37 BAT0}${color yellow} $battery_percent%$color$endif
- Hostname ${color yellow}$nodename$color  Temp ${color yellow}${acpitemp}C$color  ${if_existing /proc/acpi/ac_adapterADP1/state}AC ${color yellow}${acpiacadapter ADP1}$color$endif
+ Hostname ${color yellow}$nodename$color  Temp ${color yellow}${acpitemp}C$color  ${if_existing /proc/acpi/ac_adapter/ADP1/state}AC ${color yellow}${acpiacadapter ADP1}$color$endif
 
  Load ${color yellow}$loadavg$color  Procs ${color yellow}$running_processes/$processes$color
  Cpu0 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%$color${if_existing /sys/class/cpuid/cpu1}
