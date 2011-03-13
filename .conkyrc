@@ -11,7 +11,7 @@ TEXT
  Hostname ${color yellow}$nodename$color  Temp ${color yellow}${acpitemp}C$color  ${if_existing /proc/acpi/ac_adapter/ADP1/state}AC ${color yellow}${acpiacadapter ADP1}$color$endif
 
  Load ${color yellow}$loadavg$color  Procs ${color yellow}$running_processes/$processes$color
- Cpu0 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%$color${if_existing /sys/class/cpuid/cpu1}
+ Cpu0 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%${if_existing /sys/class/cpuid/cpu1}$color
  Cpu1 ${color red}${cpubar cpu2 3, 36} ${color yellow}${freq_g 2} ${cpu cpu2}%$endif
  ${top name 1}${top cpu 1}    ${top mem_res 1}
  ${top name 2}${top cpu 2}    ${top mem_res 2}
