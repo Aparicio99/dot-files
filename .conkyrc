@@ -27,7 +27,7 @@ TEXT
  Read ${color yellow}${diskio_read sda}  ${color}Write ${color yellow}${diskio_write sda}$color
 ${if_up wlan0}
  Wireless ${color green}${wireless_link_bar 3, 19 wlan0} ${color yellow} ${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}$color
- wlan0 ${color yellow}${addrs wlan0}$color  Up ${color yellow}${upspeed wlan0}$color  Down ${color yellow}${downspeed wlan0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}${if_up eth0}
- eth0  ${color yellow}${addrs eth0}$color  Up ${color yellow}${upspeed eth0}$color  Down ${color yellow}${downspeed eth0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color$endif
+ wlan0 ${color yellow}${addrs wlan0}$color  Down ${color yellow}${downspeed wlan0}$color  Up ${color yellow}${upspeed wlan0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}${if_up eth0}
+ eth0  ${color yellow}${addrs eth0}$color  Down ${color yellow}${downspeed eth0}$color  Up ${color yellow}${upspeed eth0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color$endif
 
  Portage Sync ${color yellow}${execi 300 ~/scripts/lastsync days}  ${color}Update ${color yellow}${execi 300 ~/scripts/lastupdate days}$color
