@@ -49,15 +49,13 @@ eval $(dircolors)
 ##### Prompt #####
 export RPROMTP=""
 
-if [[ "$HOST" == "void" ]]; then
-	COLOR="$(print '%{\033[38;5;208m%}')"
-elif [[ "$HOST" == "null" ]]; then
-	COLOR="%F{red}"
-elif [[ "$HOST" == "nop" ]]; then
-	COLOR="%F{green}"
-fi
+declare -A COLOR
+COLOR[void]="$(print '%{\033[38;5;239m%}')" # light gray
+COLOR[null]="%F{red}"
+COLOR[nop]="%F{green}"
+COLOR[nexus]="%F{magenta}"
 
-export PS1="%B$COLOR%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
+export PS1="%B${COLOR[$HOST]}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
 
 ##### Bindings #####
 #bindkey -M vicmd v edit-command-line # Esc v
