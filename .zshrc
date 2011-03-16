@@ -50,12 +50,14 @@ eval $(dircolors)
 export RPROMTP=""
 
 if [[ "$HOST" == "void" ]]; then
-	# dir :)
-	export PS1="%B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
-else
-	# hostname dir :)
-	export PS1="%B%F{red}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
+	COLOR="$(print '%{\033[38;5;208m%}')"
+elif [[ "$HOST" == "null" ]]; then
+	COLOR="%F{red}"
+elif [[ "$HOST" == "nop" ]]; then
+	COLOR="%F{green}"
 fi
+
+export PS1="%B$COLOR%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
 
 ##### Bindings #####
 #bindkey -M vicmd v edit-command-line # Esc v
