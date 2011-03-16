@@ -8,7 +8,9 @@ setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist
 ##### External files #####
 source /etc/profile
 source $HOME/.alias-funcs
-source $HOME/.pvt-alias
+if [ -f $HOME/.pvt-alias ]; then
+	source $HOME/.pvt-alias
+fi
 
 bindkey -e # Emacs mode
 
@@ -53,7 +55,7 @@ declare -A COLOR
 COLOR[void]="$(print '%{\033[38;5;239m%}')" # light gray
 COLOR[null]="%F{red}"
 COLOR[nop]="%F{green}"
-COLOR[nexus]="%F{magenta}"
+COLOR[nexus]="%F{cyan}"
 
 export PS1="%B${COLOR[$HOST]}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
 
