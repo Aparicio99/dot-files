@@ -24,9 +24,7 @@ alias la="ls -a"
 alias ll="ls -lhG"
 alias al="ls -lhGa"
 alias rf='rm -rf'
-alias cls='cd && echo -n "]0;${USER}@void" && clear'
-alias x="exit"
-alias s="sudo"
+alias cls='cd && echo -n "]0;${USER}@{HOST}" && clear'
 alias nuke='pkill -9'
 alias untar="tar xvf"
 alias clean="make clean"
@@ -35,7 +33,7 @@ alias ff="find . -type f -name"
 alias psu="ps -Hc -F S f -u $USER"
 alias psall="ps -ejH"
 
-### Script ###
+### Scripts ###
 alias {t,term}="/home/aparicio/scripts/uterm"
 
 ### VCS ###
@@ -69,7 +67,7 @@ alias weather="curl http://weather.noaa.gov/pub/data/observations/metar/decoded/
 alias record="script -t 2> demo.timing -a demo.session"
 alias replay="scriptreplay demo.timing demo.session"
 alias 010="setxkbmap pt"
-alias zshrc="source /home/aparicio/.zshrc"
+alias zshrc="source ~/.zshrc"
 alias tcp="lsof -i tcp"
 alias rcp="rsync --archive --one-file-system --hard-links --human-readable --inplace --numeric-ids --delete --delete-excluded --progress --compress"
 alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
@@ -91,6 +89,12 @@ function restart { /etc/init.d/$@ restart }
 function pause { /etc/init.d/$@ pause }
 
 function usage() { du -skch $@ | sort -rh }
+
+
+pdf()		{ zathura "$@" 2> /dev/null }
+unix2date()	{ date -ud@$@}
+date2unix()	{ date +%s --date="$@"}
+wiki()		{ dig +short txt $1.wp.dg.cx }
 
 function freq() {
 	cpufreq-set -f $1Mhz -c 0
@@ -121,8 +125,3 @@ youtube-mp3() {
 	echo "Downloading $file"
 	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
 }
-
-pdf()		{ epdfview "$@" 2> /dev/null }
-unix2date()	{ date -ud@$@}
-date2unix()	{ date +%s --date="$@"}
-wiki()		{ dig +short txt $1.wp.dg.cx }
