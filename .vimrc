@@ -1,14 +1,16 @@
 " Settings
-set title incsearch number showcmd ttyfast wildmenu showmatch modeline
+set title hlsearch incsearch number showcmd ttyfast showmatch
+set modeline autoindent smartindent nocompatible wildmenu
 set mouse=a
 set pdev=MFC235C_NULL
-set directory^=$HOME/.vim_tmp//
+set directory^=$HOME/.vim_tmp/
 set scrolloff=3
 set textwidth=0
 set matchtime=2
 set laststatus=2
 set dictionary+=/usr/share/dict/words
 set spelllang=pt
+set tabstop=4
 
 if version >= 703
 	set undofile
