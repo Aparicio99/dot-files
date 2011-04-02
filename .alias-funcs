@@ -72,6 +72,7 @@ alias tcp="lsof -i tcp"
 alias rcp="rsync --archive --one-file-system --hard-links --human-readable --inplace --numeric-ids --delete --delete-excluded --progress --compress"
 alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
 alias distc-monitor="DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text 1"
+alias rdp="rdesktop -k pt -u virtual -p -"
 
 
 alias dec2bin="base 10 2"
