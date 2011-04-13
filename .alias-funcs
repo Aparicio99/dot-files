@@ -92,7 +92,7 @@ function pause { /etc/init.d/$@ pause }
 function usage() { du -skch $@ | sort -rh }
 
 
-pdf()		{ zathura "$@" 2> /dev/null }
+pdf()		{ zathura "$@" 2> /dev/null & }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
 wiki()		{ dig +short txt $1.wp.dg.cx }
@@ -125,4 +125,9 @@ youtube-mp3() {
 	file=$(youtube-dl -s -e $url);
 	echo "Downloading $file"
 	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
+}
+
+ctt() {
+	html2text "http://www2.ctt.pt/feapl_2poa/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
+	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
 }

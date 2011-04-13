@@ -10,7 +10,7 @@ set matchtime=2
 set laststatus=2
 set dictionary+=/usr/share/dict/words
 set spelllang=pt
-set tabstop=4
+"set tabstop=4
 
 if version >= 703
 	set undofile
