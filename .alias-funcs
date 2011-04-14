@@ -92,7 +92,6 @@ function pause { /etc/init.d/$@ pause }
 function usage() { du -skch $@ | sort -rh }
 
 
-pdf()		{ zathura "$@" 2> /dev/null & }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
 wiki()		{ dig +short txt $1.wp.dg.cx }
@@ -101,6 +100,13 @@ function freq() {
 	cpufreq-set -f $1Mhz -c 0
 	cpufreq-set -f $1Mhz -c 1
 }
+
+pdf() {
+	for i in $@; do
+		zathura $i 2> /dev/null &
+	done
+}
+
 alias 1000="freq 1000"
 alias 1333="freq 1333"
 alias 1666="freq 1666"
