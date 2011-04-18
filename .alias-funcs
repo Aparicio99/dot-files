@@ -82,39 +82,31 @@ alias hex2dec="base 16 10"
 
 ### Functions ###
 
-function base { echo "ibase=$1; obase=$2; $3" | bc }
+start()		{ /etc/init.d/$@ start }
+stop()		{ /etc/init.d/$@ stop }
+restart()	{ /etc/init.d/$@ restart }
+pause()		{ /etc/init.d/$@ pause }
 
-function start { /etc/init.d/$@ start }
-function stop { /etc/init.d/$@ stop }
-function restart { /etc/init.d/$@ restart }
-function pause { /etc/init.d/$@ pause }
-
-function usage() { du -skch $@ | sort -rh }
-
-
+pdf()		{ for i in $@; do zathura $i & done }
+usage()		{ du -skch $@ | sort -rh }
+base()		{ echo "ibase=$1; obase=$2; $3" | bc }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
 wiki()		{ dig +short txt $1.wp.dg.cx }
+avg()		{ echo "avg{$@}" | ised }
+cl()		{ cd $@; ls }
 
-function freq() {
+freq() {
 	cpufreq-set -f $1Mhz -c 0
 	cpufreq-set -f $1Mhz -c 1
 }
-
-pdf() {
-	for i in $@; do
-		zathura $i 2> /dev/null &
-	done
-}
-
 alias 1000="freq 1000"
 alias 1333="freq 1333"
 alias 1666="freq 1666"
 alias 2000="freq 2000"
 
-function cl() { cd $@; ls }
 
-function ..() {
+..() {
 	for ((j=${1:-1},i=0;i<j;i++));do
 		builtin cd ..;
 	done;
@@ -137,3 +129,9 @@ ctt() {
 	html2text "http://www2.ctt.pt/feapl_2poa/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
 	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
 }
+
+warn() {
+	$@
+	notify-send -t 0 "##### Command Done #####"  "\n$*\n"
+}
+alias -g W="warn"
