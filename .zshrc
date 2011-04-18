@@ -148,6 +148,7 @@ compdef complete_freq freq
 compdef pkill=killall
 compdef _services start stop restart toggle
 compdef _pdf pdf zathura epdfview
+compdef _command warn
 compdef '_values options on off toggle' mouse
 compdef '_files -g "*.aes"' dec
 compdef '_files -g "*.(doc|DOC|rtf|RTF|docx|odt|abw)"' abiword oowriter
