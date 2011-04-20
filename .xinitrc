@@ -3,6 +3,7 @@ DEFAULT_SESSION="awesome"
 xset r rate 250 40 &
 xsetroot -cursor_name gentoo-silver
 xmodmap ~/.Xmodmap
+xscreensaver&
 
 case $1 in
 	openbox)
