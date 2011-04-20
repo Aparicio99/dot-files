@@ -5,12 +5,8 @@ export SAVEHIST=20000
 export REPORTTIME=30
 setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist_ignore_space
 
-if [ "$PS1" ]; then
-	if [ -d /sys/fs/cgroup ]; then
-		cdir=/sys/fs/cgroup
-	else
-		cdir=/dev/cgroup
-	fi
+if [[ -n "$PS1" && -d "/sys/fs/cgroup" ]]; then
+	cdir=/sys/fs/cgroup
 	mkdir -p -m 0700 $cdir/user/$$ > /dev/null 2>&1
 	/bin/echo $$ > $cdir/user/$$/tasks
 	/bin/echo '1' > $cdir/user/$$/notify_on_release
