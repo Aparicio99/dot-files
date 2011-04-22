@@ -132,6 +132,6 @@ ctt() {
 
 warn() {
 	$@
-	notify-send -t 0 "##### Command Done #####"  "\n$*\n"
+	notify-send-wrapper -t 0 "##### Command Done #####"  "\n$*\n"
 }
 alias -g W="warn"
