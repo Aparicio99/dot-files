@@ -126,7 +126,7 @@ youtube-mp3() {
 }
 
 ctt() {
-	html2text "http://www2.ctt.pt/feapl_2poa/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
+	html2text "http://www.ctt.pt/feapl_2/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
 	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
 }
 
