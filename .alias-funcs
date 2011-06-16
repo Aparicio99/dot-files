@@ -85,7 +85,7 @@ alias hex2dec="base 16 10"
 start()		{ /etc/init.d/$@ start }
 stop()		{ /etc/init.d/$@ stop }
 restart()	{ /etc/init.d/$@ restart }
-pause()		{ /etc/init.d/$@ pause }
+pause()		{ /etc/init.d/$@ --nodeps stop }
 
 pdf()		{ for i in $@; do zathura $i & done }
 usage()		{ du -skch $@ | sort -rh }
