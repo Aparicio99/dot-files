@@ -150,3 +150,7 @@ compdef '_files -g "*.aes"' dec
 compdef '_files -g "*.(doc|DOC|rtf|RTF|docx|odt|abw)"' abiword oowriter
 compdef '_files -g "*.(bz2|gz|rar|tar|tbz2|tgz|zip|Z|7z|lzma|lzo)"' extract
 compdef '_files -F "*.o"' vim
+
+source /home/aparicio/.zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=cyan'
