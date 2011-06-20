@@ -60,8 +60,7 @@ alias bat="cat /sys/class/power_supply/BAT0/uevent"
 alias min="xbacklight -set 0 && 1000"
 alias max="xbacklight -set 100 && 2000"
 
-### More ###
-alias lf="leafpad"
+### Other ###
 alias http="python3 -m http.server 9999"
 alias weather="curl http://weather.noaa.gov/pub/data/observations/metar/decoded/LPPT.TXT"
 alias record="script -t 2> demo.timing -a demo.session"
@@ -74,12 +73,6 @@ alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
 alias distc-monitor="DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text 1"
 alias rdp="rdesktop -k pt -u virtual -p -"
 
-
-alias dec2bin="base 10 2"
-alias bin2dec="base 2 10"
-alias dec2hex="base 10 16"
-alias hex2dec="base 16 10"
-
 ### Functions ###
 
 start()		{ /etc/init.d/$@ start }
@@ -89,12 +82,18 @@ pause()		{ /etc/init.d/$@ --nodeps stop }
 
 pdf()		{ for i in $@; do zathura $i & done }
 usage()		{ du -skch $@ | sort -rh }
-base()		{ echo "ibase=$1; obase=$2; $3" | bc }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
 wiki()		{ dig +short txt $1.wp.dg.cx }
 avg()		{ echo "avg{$@}" | ised }
 cl()		{ cd $@; ls }
+
+base()		{ echo "ibase=$1; obase=$2; $3" | bc }
+alias dec2bin="base 10 2"
+alias bin2dec="base 2 10"
+alias dec2hex="base 10 16"
+alias hex2dec="base 16 10"
+
 
 freq() {
 	cpufreq-set -f $1Mhz -c 0
