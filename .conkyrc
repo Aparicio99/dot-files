@@ -6,29 +6,27 @@ default_bar_size 50 0
 short_units yes
 TEXT
 
- Uptime ${color yellow}$uptime$color  Kernel ${color yellow}$kernel$color${if_existing /sys/class/power_supply/BAT0/uevent}
- Battery ${color green}${battery_bar 0, 37 BAT0}${color yellow} $battery_percent%$color$endif
- Hostname ${color yellow}$nodename$color  Temp ${color yellow}${acpitemp}C$color  ${if_existing /proc/acpi/ac_adapter/ADP1/state}AC ${color yellow}${acpiacadapter ADP1}$color$endif
-
- Load ${color yellow}$loadavg$color  Procs ${color yellow}$running_processes/$processes$color
- Cpu0 ${color red}${cpubar cpu1 3, 36} ${color yellow}${freq_g 1} ${cpu cpu1}%${if_existing /sys/class/cpuid/cpu1}$color
- Cpu1 ${color red}${cpubar cpu2 3, 36} ${color yellow}${freq_g 2} ${cpu cpu2}%$endif
- ${top name 1}${top cpu 1}    ${top mem_res 1}
- ${top name 2}${top cpu 2}    ${top mem_res 2}
- ${top name 3}${top cpu 3}    ${top mem_res 3}$color
-
- Mem ${color red}${membar 3,31}$color ${color yellow}$mem/$memmax $memperc%
- ${top_mem name 1}${top_mem mem 1}    ${top_mem mem_res 1}
- ${top_mem name 2}${top_mem mem 2}    ${top_mem mem_res 2}
- ${top_mem name 3}${top_mem mem 3}    ${top_mem mem_res 3}$color
-
- Root ${color green}${fs_bar 3,29 /} ${color yellow}${fs_used /}/${fs_size /} ${fs_used_perc /}%$color
- Home ${color green}${fs_bar 3,29 /home} ${color yellow}${fs_used /home}/${fs_size /home} ${fs_used_perc /home}%$color
- Read ${color yellow}${diskio_read sda}  ${color}Write ${color yellow}${diskio_write sda}$color
-${if_up wlan0}
- Wireless ${color green}${wireless_link_bar 3, 19 wlan0} ${color yellow} ${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}$color
- wlan0 ${color yellow}${addrs wlan0}$color  Down ${color yellow}${downspeed wlan0}$color  Up ${color yellow}${upspeed wlan0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}${if_up eth0}
- eth0  ${color yellow}${addrs eth0}$color  Down ${color yellow}${downspeed eth0}$color  Up ${color yellow}${upspeed eth0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}${if_up ppp0}
- ppp0  ${color yellow}${addrs ppp0}$color  Down ${color yellow}${downspeed ppp0}$color  Up ${color yellow}${upspeed ppp0}  ${color}Conn ${color yellow}${tcp_portmon 1 65535 count}$color${endif}
-
- Portage Sync ${color yellow}${execi 300 ~/scripts/lastsync days}  ${color}Update ${color yellow}${execi 300 ~/scripts/lastupdate days}$color
+ ${color blue}+--${color}System ${color yellow}$nodename ${acpitemp}C
+ ${color blue}|   +--${color}Kernel ${color yellow}$kernel
+ ${color blue}|   +--${color}Uptime ${color yellow}$uptime
+ ${color blue}+--${color}Processes ${color yellow}$running_processes/$processes
+ ${color blue}|   +--${color}CPU0 ${color red}${cpubar cpu0 3, 24} ${color yellow}${cpu cpu1}% ${freq_g 1}Ghz${if_existing /sys/class/cpuid/cpu1}
+ ${color blue}|   +--${color}CPU1 ${color red}${cpubar cpu1 3, 24} ${color yellow}${cpu cpu2}% ${freq_g 2}Ghz$endif
+ ${color blue}|   +--${color}Load ${color yellow}$loadavg
+ ${color blue}|   |    +--${color}${top name 1}${color yellow}${top cpu 1} ${top cpu 1}
+ ${color blue}|   |    +--${color}${top name 2}${color yellow}${top cpu 2} ${top cpu 2}
+ ${color blue}|   |    +--${color}${top name 3}${color yellow}${top cpu 3} ${top cpu 3}
+ ${color blue}|   +--${color}Mem ${color red}${membar 3,22} ${color yellow}$mem/$memmax $memperc%
+ ${color blue}|        +--${color}${top_mem name 1}${color yellow}${top_mem mem 1} ${top_mem mem_res 1}
+ ${color blue}|        +--${color}${top_mem name 2}${color yellow}${top_mem mem 2} ${top_mem mem_res 2}
+ ${color blue}|        +--${color}${top_mem name 3}${color yellow}${top_mem mem 3} ${top_mem mem_res 3}
+ ${color blue}+--${color}Storage ${color yellow}${diskio_read sda}/${color yellow}${diskio_write sda}$color R/W
+ ${color blue}|   +--${color}Root ${color red}${fs_bar 3,20 /} ${color yellow}${fs_used /}/${fs_size /} ${fs_used_perc /}%
+ ${color blue}|   +--${color}Home ${color red}${fs_bar 3,20 /home} ${color yellow}${fs_used /home}/${fs_size /home} ${fs_used_perc /home}%
+ ${color blue}+--${color}Network ${color yellow}${tcp_portmon 1 65535 count}$color conn
+ ${color blue}|   +--${color}Wifi ${color green}${wireless_link_bar 3, 15 wlan0} ${color yellow}${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}
+ ${if_up wlan0}${color blue}|   +--${color}wlan0 ${color yellow}${addrs wlan0}$color Up ${color yellow}${upspeed wlan0}$color Down ${color yellow}${downspeed wlan0}$endif
+ ${if_up eth0}${color blue}|   +--${color}eth0  ${color yellow}${addrs eth0}$color Up ${color yellow}${upspeed eth0}$color Down ${color yellow}${downspeed eth0}
+ $endif${color blue}+--${color}Portage
+ ${color blue}    +--${color}Sync ${color yellow}${execi 300 ~/scripts/lastsync days}
+ ${color blue}    +--${color}Update ${color yellow}${execi 300 ~/scripts/lastupdate days}
