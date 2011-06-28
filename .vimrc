@@ -54,7 +54,7 @@ colorscheme molokai
 hi ModeMsg ctermbg=green ctermfg=black
 
 " Highlight extra white space
-highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+highlight ExtraWhitespace ctermbg=darkgray guibg=lightgreen
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t/ 
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
