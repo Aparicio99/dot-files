@@ -1,3 +1,4 @@
+#!/bin/zsh
 ### Program alias ###
 alias -s pdf=pdf
 alias -s {avi,mpeg,mpg,mov,wmv}=mplayer

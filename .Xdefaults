@@ -7,3 +7,8 @@ URxvt*foreground: #FFFFFF
 URxvt*colorURL: #86a2be
 URxvt*font: xft:mono:pixelsize=10
 URxvt*termName: rxvt-unicode
+
+XTerm*background: black
+XTerm*cursorColor: lightgrey
+XTerm*foreground: white
+XTerm*saveLines: 1024

@@ -1,11 +1,44 @@
 # Conky Config
 out_to_x no
-out_to_ncurses yes
+out_to_ncurses no
+out_to_console yes
 update_interval 2.0
 default_bar_size 50 0
 short_units yes
 TEXT
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  ${color blue}+--${color}System ${color yellow}$nodename ${acpitemp}C
  ${color blue}|   +--${color}Kernel ${color yellow}$kernel
  ${color blue}|   +--${color}Uptime ${color yellow}$uptime
