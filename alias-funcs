@@ -81,7 +81,6 @@ stop()		{ /etc/init.d/$@ stop }
 restart()	{ /etc/init.d/$@ restart }
 pause()		{ /etc/init.d/$@ --nodeps stop }
 
-pdf()		{ for i in $@; do zathura $i & done }
 usage()		{ du -skch $@ | sort -rh }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
@@ -95,6 +94,15 @@ alias bin2dec="base 2 10"
 alias dec2hex="base 10 16"
 alias hex2dec="base 16 10"
 
+pdf() {
+	for i in $@; do
+		if [ -e $i ]; then
+			zathura $i &
+		else
+			echo "File '$i' does not exist"
+		fi
+	done
+}
 
 freq() {
 	for cpu in /sys/class/cpuid/*; do
