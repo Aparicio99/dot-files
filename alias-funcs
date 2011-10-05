@@ -136,10 +136,10 @@ youtube-mp3() {
 	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
 }
 
-ctt() {
-	html2text "http://www.ctt.pt/feapl_2/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
-	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
-}
+#ctt() {
+#	html2text "http://www.ctt.pt/feapl_2/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
+#	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
+#}
 
 warn() {
 	$@
