@@ -59,16 +59,16 @@ $alignc${color}Host ${color3}$nodename ${color}Uptime ${color3}$uptime
 $alignc$color${font mono:size=10}CPU$font
 
 ${color}Cpu0 $alignr${color3}${cpu cpu1}% ${voffset -3}${color1}${cpugraph cpu1 20, 120 333333 ffffff}
-${voffset -17}${color3}${freq_g 1}GHz${color3}${platform coretemp.0 temp 1}C
+${voffset -17}${color3}${freq_g 1}GHz${color3}${platform coretemp.0 temp 2}C
 
 ${color}Cpu1 $alignr${color3}${cpu cpu2}% ${voffset -3}${color1}${cpugraph cpu2 20, 120 333333 ffffff}
-${voffset -17}${color3}${freq_g 2}GHz${platform coretemp.1 temp 1}C
+${voffset -17}${color3}${freq_g 2}GHz${platform coretemp.0 temp 3}C
 
 ${color}Cpu2 $alignr${color3}${cpu cpu3}% ${voffset -3}${color1}${cpugraph cpu3 20, 120 333333 ffffff}
-${voffset -17}${color3}${freq_g 3}GHz${platform coretemp.2 temp 1}C
+${voffset -17}${color3}${freq_g 3}GHz${platform coretemp.0 temp 4}C
 
 ${color}Cpu3 $alignr${color3}${cpu cpu4}% ${voffset -3}${color1}${cpugraph cpu4 20, 120 333333 ffffff}
-${voffset -17}${color3}${freq_g 4}GHz${platform coretemp.3 temp 1}C
+${voffset -17}${color3}${freq_g 4}GHz${platform coretemp.0 temp 5}C
 
 ${color}Load ${color3}$loadavg$alignr${color3}$running_processes /$processes
 $color0${cpubar cpu0 5, 190}

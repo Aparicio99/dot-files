@@ -1,7 +1,7 @@
 ##### Options #####
 export HISTFILE=~/.zhistory
-export HISTSIZE=20000
-export SAVEHIST=20000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export REPORTTIME=30
 setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist_ignore_space
 
