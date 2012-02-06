@@ -9,6 +9,8 @@ alias -s {jpg,png,svg,xpm,bmp,gif}=gpicview
 alias -g KEY='/etc/portage/package.keywords'
 alias -g USE='/etc/portage/package.use'
 alias -g NEW='/home/aparicio/Desktop/*(.oc[1])'
+alias -g WWW='/var/www/localhost/htdocs/'
+alias -g AUTO='--autounmask-write'
 
 ### Replaces ###
 alias ls="ls --color=auto"

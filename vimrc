@@ -44,9 +44,9 @@ map <S-Tab> <C-W>W
 inoremap jj <ESC>
 
 nnoremap <leader> y yyp
-nnoremap <F3> :TlistToggle<CR>
-nnoremap <F4> :GundoToggle<CR>
-nnoremap <F5> :Tab<CR>
+nnoremap <F5> :TlistToggle<CR>
+nnoremap <F6> :GundoToggle<CR>
+nnoremap <F7> :Tab<CR>
 
 " Colors
 set t_Co=256

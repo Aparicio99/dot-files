@@ -115,7 +115,7 @@ $alignc$color${font mono:size=10}Network$font
 
 ${color}Connections ${color3}${tcp_portmon 1 65535 count}
 ${if_up wlan0}${color}Wireless ${color3}${wireless_essid wlan0}${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}
-$color0${wireless_link_bar 3, 190 wlan0}
+$color0${wireless_link_bar 5, 190 wlan0}
 
 $alignc${color}wlan0 ${color3}${addrs wlan0}
 ${color}Up ${color3}${upspeed wlan0} ${goto 105}${color}Down ${color3}${downspeed wlan0}
@@ -128,3 +128,11 @@ $alignc$color${font mono:size=10}Portage$font
 
 $alignc${color}Last sync    ${color3}${execi 300 ~/scripts/lastsync days}
 $alignc${color}Last update  ${color3}${execi 300 ~/scripts/lastupdate days}
+
+$if_mpd_playing$alignc$color${font mono:size=10}MPD$font
+
+$alignc$color3$mpd_title
+$color${mpd_bar 5, 190}
+$endif
+
+
