@@ -76,6 +76,8 @@ alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
 alias distc-monitor="DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text 1"
 alias rdp="rdesktop -k pt -u virtual -p -"
 alias stress="perl -e 'while (--$ARGV[0] and fork) {}; while () {}'"
+alias iptables_open="iptables -A INPUT -p tcp -j ACCEPT --dport"
+alias iptables_close="iptables -D INPUT -p tcp -j ACCEPT --dport"
 
 ### Functions ###
 
