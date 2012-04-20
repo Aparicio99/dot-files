@@ -78,6 +78,7 @@ alias rdp="rdesktop -k pt -u virtual -p -"
 alias stress="perl -e 'while (--$ARGV[0] and fork) {}; while () {}'"
 alias iptables_open="iptables -A INPUT -p tcp -j ACCEPT --dport"
 alias iptables_close="iptables -D INPUT -p tcp -j ACCEPT --dport"
+alias listen="ss -lp | column"
 
 ### Functions ###
 
