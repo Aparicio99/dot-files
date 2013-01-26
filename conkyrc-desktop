@@ -51,7 +51,20 @@ color1 393939
 color2 red
 color3 green
 
+mpd_host 127.0.0.1
+
 TEXT
+${image ~/imagens/tux100.png -p 45,0}
+
+
+
+
+
+
+
+
+
+
 
 $alignc${color3}Linux $kernel $machine
 $alignc${color}Host ${color3}$nodename ${color}Uptime ${color3}$uptime 
@@ -97,6 +110,8 @@ ${color}Var $alignr${color3}${fs_used_perc /var}%     ${fs_used /var} / ${fs_siz
 $color0${fs_bar 5,190 /var}
 ${color}Home $alignr${color3}${fs_used_perc /home}%     ${fs_used /home} / ${fs_size /home}
 $color0${fs_bar 5,190 /home}
+${color}Big Stuff $alignr${color3}${fs_used_perc /mnt/big_stuff}%     ${fs_used /mnt/big_stuff} / ${fs_size /mnt/big_stuff}
+$color0${fs_bar 5,190 /mnt/big_stuff}
 ${color}Portage $alignr${color3}${fs_used_perc /usr/portage}%     ${fs_used /usr/portage} / ${fs_size /usr/portage}
 $color0${fs_bar 5,190 /usr/portage}
 ${color}proc             read${alignr}write${color3}
@@ -113,16 +128,19 @@ $color1${diskiograph_read sdb 20, 90 333333 ffffff}${goto 105}${diskiograph_writ
 
 $alignc$color${font mono:size=10}Network$font
 
-${color}Connections ${color3}${tcp_portmon 1 65535 count}
+${color}Connections ${color3}${tcp_portmon 1 65535 count}    ${color}Router ${if_existing /tmp/router_status ms}${color3}${head /tmp/router_status 1}${else}${color #ff0000}unreachable${endif}
 ${if_up wlan0}${color}Wireless ${color3}${wireless_essid wlan0}${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}
 $color0${wireless_link_bar 5, 190 wlan0}
 
-$alignc${color}wlan0 ${color3}${addrs wlan0}
+$alignc${color}wlan0 ${color3}${addrs wlan0}$
 ${color}Up ${color3}${upspeed wlan0} ${goto 105}${color}Down ${color3}${downspeed wlan0}
-$color1${upspeedgraph wlan0 20, 90 333333 ffffff}${goto 105}${downspeedgraph wlan0 20, 90 333333 ffffff}$endif${if_up eth0}
-$alignc${color}eth0 ${color3}${addrs eth0}
-${color}Up ${color3}${upspeed eth0} ${goto 105}${color}Down ${color3}${downspeed eth0}
-$color1${upspeedgraph eth0 20, 90 333333 ffffff}${goto 105}${downspeedgraph eth0 20, 90 333333 ffffff}$endif
+$color1${upspeedgraph wlan0 20, 90 333333 ffffff}${goto 105}${downspeedgraph wlan0 20, 90 333333 ffffff}$endif${if_up br0}
+$alignc${color}br0 ${color3}${addrs br0}
+${color}Up ${color3}${upspeed br0} ${goto 105}${color}Down ${color3}${downspeed br0}
+$color1${upspeedgraph br0 20, 90 333333 ffffff}${goto 105}${downspeedgraph br0 20, 90 333333 ffffff}$endif${if_up usb0}
+$alignc${color}usb0 ${color3}${addrs usb0}
+${color}Up ${color3}${upspeed usb0} ${goto 105}${color}Down ${color3}${downspeed usb0}
+$color1${upspeedgraph usb0 20, 90 333333 ffffff}${goto 105}${downspeedgraph usb0 20, 90 333333 ffffff}$endif
 
 $alignc$color${font mono:size=10}Portage$font
 
@@ -132,7 +150,5 @@ $alignc${color}Last update  ${color3}${execi 300 ~/scripts/lastupdate days}
 $if_mpd_playing$alignc$color${font mono:size=10}MPD$font
 
 $alignc$color3$mpd_title
-$color${mpd_bar 5, 190}
+${color0}${mpd_bar 5, 190}
 $endif
-
-
