@@ -94,7 +94,7 @@ wiki()		{ dig +short txt $1.wp.dg.cx }
 avg()		{ echo "avg{$@}" | ised }
 cl()		{ cd $@; ls }
 
-base()		{ echo "ibase=$1; obase=$2; $3" | bc }
+base()		{ echo "obase=$2; ibase=$1; $3" | bc }
 alias dec2bin="base 10 2"
 alias bin2dec="base 2 10"
 alias dec2hex="base 10 16"
