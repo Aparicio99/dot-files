@@ -11,6 +11,7 @@ alias -g USE='/etc/portage/package.use'
 alias -g NEW='/home/aparicio/Desktop/*(.oc[1])'
 alias -g WWW='/var/www/localhost/htdocs/'
 alias -g AUTO='--autounmask-write'
+alias -g V='| vim -'
 
 ### Replaces ###
 alias ls="ls --color=auto"
@@ -18,7 +19,7 @@ alias grep='grep --colour=auto'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-alias wcalc='noglob wcalc'
+alias wcalc='noglob wcalc --ints -EE'
 alias emerge='noglob emerge'
 
 ### Shortcuts ###
@@ -103,7 +104,7 @@ alias hex2dec="base 16 10"
 pdf() {
 	for i in $@; do
 		if [ -e $i ]; then
-			zathura $i &
+			zathura $i 2>/dev/null&
 		else
 			echo "File '$i' does not exist"
 		fi
@@ -141,11 +142,7 @@ youtube-mp3() {
 	echo "Downloading $file"
 	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
 }
-
-#ctt() {
-#	html2text "http://www.ctt.pt/feapl_2/app/open/objectSearch/cttObjectSearch.jspx?objects=&showResults=true&pesqObjecto.objectoId=$1" \
-#	| sed -e "s/&#xC7;/Ç/g" -e "s/&#xC3;/Ã/" -e "s/&#xE3;/ã/g"
-#}
+}
 
 warn() {
 	$@
