@@ -5,14 +5,6 @@ export SAVEHIST=100000
 export REPORTTIME=30
 setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist_ignore_space
 
-if [[ -n "$PS1" && -d "/sys/fs/cgroup/user" ]]; then
-	cdir=/sys/fs/cgroup
-	mkdir -p -m 0700 $cdir/user/$$ > /dev/null 2>&1
-	/bin/echo $$ > $cdir/user/$$/tasks
-	/bin/echo '1' > $cdir/user/$$/notify_on_release
-	unset -v cdir
-fi
-
 ##### External files #####
 source /etc/profile
 source $HOME/.alias-funcs
