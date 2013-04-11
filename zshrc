@@ -55,12 +55,16 @@ declare -A COLOR
 COLOR[void]="$(print '%{\033[38;5;239m%}')" # light gray
 COLOR[null]="%F{red}"
 COLOR[nop]="%F{green}"
+COLOR[nil]="%F{yellow}"
 COLOR[nexus]="%F{cyan}"
+
+if [ ! ${COLOR[$HOST]} ]; then
+	COLOR[$HOST]="%F{blue}"
+fi
 
 export PS1="%B${COLOR[$HOST]}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
 
 ##### Bindings #####
-#bindkey -M vicmd v edit-command-line # Esc v
 bindkey '^V' edit-command-line # Ctrl+v
 bindkey '^Xf' insert-files # Ctrl+x f
 bindkey '^X^Z' predict-on # Ctrl+x+z
