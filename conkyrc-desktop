@@ -54,22 +54,12 @@ color3 green
 mpd_host 127.0.0.1
 
 TEXT
-${image ~/imagens/tux100.png -p 45,0}
-
-
-
-
-
-
-
-
-
-
+${image ~/imagens/tux100.png -p 80,74}
 
 $alignc${color3}Linux $kernel $machine
 $alignc${color}Host ${color3}$nodename ${color}Uptime ${color3}$uptime 
 
-$alignc$color${font mono:size=10}CPU$font
+${color}${font mono:size=10}${alignc}CPU$font
 
 ${color}Cpu0 $alignr${color3}${cpu cpu1}% ${voffset -3}${color1}${cpugraph cpu1 20, 120 333333 ffffff}
 ${voffset -17}${color3}${freq_g 1}GHz  ${platform coretemp.0 temp 2}C
@@ -90,7 +80,7 @@ ${top name 1}${top cpu 1}$alignr${top time 1}
 ${top name 2}${top cpu 2}$alignr${top time 2}
 ${top name 3}${top cpu 3}$alignr${top time 3}
 
-$alignc$color${font mono:size=10}Memory $font
+${color}${font mono:size=10}${alignc}Memory $font
 
 ${color}Buffers ${color3}$buffers $alignr${color}Cached ${color3}$cached
 ${color}Used $alignr${color3}$memperc%     $mem / $memmax
@@ -102,7 +92,7 @@ ${top_mem name 1}${top_mem mem 1}$alignr${top_mem mem_res 1}
 ${top_mem name 2}${top_mem mem 2}$alignr${top_mem mem_res 2}
 ${top_mem name 3}${top_mem mem 3}$alignr${top_mem mem_res 3}
 
-$alignc$color${font mono:size=10}Storage $font
+${color}${font mono:size=10}${alignc}Storage $font
 
 ${color}Root $alignr${color3}${fs_used_perc /}%     ${fs_used /} / ${fs_size /}
 $color0${fs_bar 5,190 /}
@@ -126,7 +116,7 @@ $alignc${color}/dev/sdb ${color3}${hddtemp /dev/sdb}C
 ${color}Read ${color3}${diskio_read sdb} ${goto 105}${color}Write ${color3}${diskio_write sdb}
 $color1${diskiograph_read sdb 20, 90 333333 ffffff}${goto 105}${diskiograph_write sdb 20, 90 333333 ffffff}
 
-$alignc$color${font mono:size=10}Network$font
+${color}${font mono:size=10}${alignc}Network$font
 
 ${color}Connections ${color3}${tcp_portmon 1 65535 count}    ${color}Router ${if_existing /tmp/router_status ms}${color3}${head /tmp/router_status 1}${else}${color #ff0000}unreachable${endif}
 ${if_up wlan0}${color}Wireless ${color3}${wireless_essid wlan0}${wireless_link_qual_perc wlan0}% ${wireless_bitrate wlan0}
@@ -142,13 +132,15 @@ $alignc${color}usb0 ${color3}${addrs usb0}
 ${color}Up ${color3}${upspeed usb0} ${goto 105}${color}Down ${color3}${downspeed usb0}
 $color1${upspeedgraph usb0 20, 90 333333 ffffff}${goto 105}${downspeedgraph usb0 20, 90 333333 ffffff}$endif
 
-$alignc$color${font mono:size=10}Portage$font
+${color}${font mono:size=10}${alignc}Portage$font
 
 $alignc${color}Last sync    ${color3}${execi 300 ~/scripts/lastsync days}
 $alignc${color}Last update  ${color3}${execi 300 ~/scripts/lastupdate days}
 
-$if_mpd_playing$alignc$color${font mono:size=10}MPD$font
+${if_mpd_playing}${color}${font mono:size=10}${alignc}MPD${font}
 
-$alignc$color3$mpd_title
+${alignc}${color3}${mpd_title}
 ${color0}${mpd_bar 5, 190}
 $endif
+
+${execpi 60 transmission-status nil}
