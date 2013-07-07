@@ -53,6 +53,8 @@ color3 green
 
 mpd_host 127.0.0.1
 
+text_buffer_size 1024
+
 TEXT
 ${image ~/imagens/tux100.png -p 80,74}
 
