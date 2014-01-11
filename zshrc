@@ -71,6 +71,8 @@ bindkey '^X^Z' predict-on # Ctrl+x+z
 bindkey '^Z' predict-off # Ctrl+z
 bindkey '^F' spell-word # Ctrl+f - Spell correction
 bindkey '^H' run-help # Ctrl+h - Command help
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 
 ##### Completion #####
 
