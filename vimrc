@@ -11,6 +11,7 @@ set laststatus=2
 set dictionary+=/usr/share/dict/words
 set spelllang=pt
 "set tabstop=4
+syntax on
 
 if version >= 703
 	set undofile
@@ -69,9 +70,3 @@ function Togglestatus()
 		set laststatus=2
 	endif
 endfunction
-
-" Typewriter sound
-"function! PlaySound()
-"  silent! exec '!aplay ~/.vim/type.wav 2>/dev/null &'
-"endfunction
-"autocmd CursorMovedI * call PlaySound()
