@@ -3,6 +3,7 @@
 # Running Settings
 out_to_console no
 update_interval 2.0
+music_player_interval 2.0
 total_run_times 0
 background yes
 
@@ -10,7 +11,7 @@ background yes
 own_window yes
 own_window_type desktop
 own_window_transparent no
-own_window_colour 333333
+own_window_colour 090909
 #own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 
@@ -44,89 +45,107 @@ show_graph_range no
 use_spacer left
 
 # Default Colors
-default_color aaaaaa
-color0 ffffff
-color1 393939
-color2 red
-color3 green
+default_color dddddd
+color0 ff8c00
+color1 202020
 
 mpd_host 127.0.0.1
 
 text_buffer_size 1024
 
-#${image ~/imagens/tux100.png -p 45,74}
+lua_load /home/aparicio/conky_test.lua
+
+# icons from https://icons8.com/
+#${alignc}-----------|--|--|------------
 TEXT
 
-$alignc${color3}Linux $kernel $machine
-$alignc${color}Host ${color3}$nodename ${color}Uptime ${color3}$uptime 
+$alignc${color0}Linux $kernel $machine
+$alignc${color}Host ${color0}$nodename ${color}Uptime ${color0}$uptime 
 
-${color}${font mono:size=10}${alignc}CPU$font
+${image ~/conky-icons/cpu.png -p 79,43 -s 26x26}
 
-${color3}${freq_g 1}G${platform coretemp.0 temp 2}C ${alignr}${cpu cpu1}%  ${color1}${cpugraph cpu1 9, 90 333333 ffffff}
-${color3}${freq_g 2}G${platform coretemp.0 temp 3}C ${alignr}${cpu cpu2}%  ${color1}${cpugraph cpu2 9, 90 333333 ffffff}
-${color3}${freq_g 3}G${platform coretemp.0 temp 4}C ${alignr}${cpu cpu3}%  ${color1}${cpugraph cpu3 9, 90 333333 ffffff}
-${color3}${freq_g 4}G${platform coretemp.0 temp 5}C ${alignr}${cpu cpu4}%  ${color1}${cpugraph cpu4 9, 90 333333 ffffff}
 
-${color}Load ${color3}$loadavg$alignr${color3}$running_processes /$processes
-$color0${cpubar cpu0 3, 190}
-${color}proc              cpu%${alignr}time${color3}
+${color}Load ${color0}$loadavg$alignr${color0}$running_processes /$processes
+${color0}${freq_g 1}G${platform coretemp.0/hwmon/hwmon0 temp 2}C ${alignr}${cpu cpu1}% ${color1}${cpugraph cpu1 9, 90 ff8c00 ff8c00}
+${color0}${freq_g 2}G${platform coretemp.0/hwmon/hwmon0 temp 3}C ${alignr}${cpu cpu2}% ${color1}${cpugraph cpu2 9, 90 ff8c00 ff8c00}
+${color0}${freq_g 3}G${platform coretemp.0/hwmon/hwmon0 temp 4}C ${alignr}${cpu cpu3}% ${color1}${cpugraph cpu3 9, 90 ff8c00 ff8c00}
+${color0}${freq_g 4}G${platform coretemp.0/hwmon/hwmon0 temp 5}C ${alignr}${cpu cpu4}% ${color1}${cpugraph cpu4 9, 90 ff8c00 ff8c00}
+
+${color}proc              cpu%${alignr}time${color0}
 ${top name 1}${top cpu 1}$alignr${top time 1}
 ${top name 2}${top cpu 2}$alignr${top time 2}
 ${top name 3}${top cpu 3}$alignr${top time 3}
 ${top name 4}${top cpu 4}$alignr${top time 4}
 
-${color}GPU ${color3}${nvidia temp}C  ${nvidia gpufreq}MHz  ${nvidia memfreq}MHz
+${image ~/conky-icons/ram.png -p 80,208 -s 25x25 }
 
-${color}${font mono:size=10}${alignc}Memory $font
 
-${color}Buffers ${color3}$buffers $alignr${color}Cached ${color3}$cached
-${color}Used $alignr${color3}$memperc%     $mem / $memmax
-${color0}${membar 3,190}
-${color}Swap $alignr${color3}$swapperc%     $swap / $swapmax
-${color0}${swapbar 3,190}
-${color}proc              mem%${alignr}res${color3}
-${top_mem name 1}${top_mem mem 1}$alignr${top_mem mem_res 1}
-${top_mem name 2}${top_mem mem 2}$alignr${top_mem mem_res 2}
-${top_mem name 3}${top_mem mem 3}$alignr${top_mem mem_res 3}
+${color}Used    ${color0}${mem}
+${color}Cached  ${color0}${cached}
+${color}Buffers ${color0}${buffers}
+${voffset -36}${alignr}${color1}${memgraph 30, 90 ff8c00 ff8c00}
+${if_match "$swapmax" > "0"}${color}Swap $alignr${color0}$swapperc% $swap / $swapmax
+${color}${swapbar 3,190}
+${endif}
+${color}proc              res${alignr}mem%${color0}
+${top_mem name 1}${top_mem mem_res 1}${alignr}${top_mem mem 1}
+${top_mem name 2}${top_mem mem_res 2}${alignr}${top_mem mem 2}
+${top_mem name 3}${top_mem mem_res 3}${alignr}${top_mem mem 3}
 
-${color}${font mono:size=10}${alignc}Storage $font
+${image ~/conky-icons/hdd.png -p 77,343 -s 30x30 }
 
-${color}Root $alignr${color3}${fs_used_perc /}%     ${fs_used /} / ${fs_size /}
-$color0${fs_bar 3,190 /}
-${color}Var $alignr${color3}${fs_used_perc /var}%     ${fs_used /var} / ${fs_size /var}
-$color0${fs_bar 3,190 /var}
-${color}Home $alignr${color3}${fs_used_perc /home}%     ${fs_used /home} / ${fs_size /home}
-$color0${fs_bar 3,190 /home}
-${color}Big Stuff $alignr${color3}${fs_used_perc /mnt/big_stuff}%     ${fs_used /mnt/big_stuff} / ${fs_size /mnt/big_stuff}
-$color0${fs_bar 3,190 /mnt/big_stuff}
-${color}Portage $alignr${color3}${fs_used_perc /usr/portage}%     ${fs_used /usr/portage} / ${fs_size /usr/portage}
-$color0${fs_bar 3,190 /usr/portage}
-${color}proc             read${alignr}write${color3}
+
+${color}fs           used% ${alignr}used  ${alignr}total${color0}
+${color}/            ${alignr}${color0}${fs_used_perc /}%  ${alignr}${fs_used /}  ${alignr}${fs_size /}
+${color}/var         ${alignr}${color0}${fs_used_perc /var}%  ${alignr}${fs_used /var}  ${alignr}${fs_size /var}
+${color}/home        ${alignr}${color0}${fs_used_perc /home}%  ${alignr}${fs_used /home}  ${alignr}${fs_size /home}
+${color}/mnt/extra   ${alignr}${color0}${fs_used_perc /mnt/extra}%  ${alignr}${fs_used /mnt/extra}  ${alignr}${fs_size /mnt/extra}
+${color}/usr/portage ${alignr}${color0}${fs_used_perc /usr/portage}%  ${alignr}${fs_used /usr/portage}  ${alignr}${fs_size /usr/portage}
+${color}/tmp/        ${alignr}${color0}${fs_used_perc /tmp}%  ${alignr}${fs_used /tmp}  ${alignr}${fs_size /tmp}
+
+${color}proc             read${alignr}write${color0}
 ${top_io name 1}${top_io io_read 1}$alignr${top_io io_write 1}
 ${top_io name 2}${top_io io_read 2}$alignr${top_io io_write 2}
 ${top_io name 3}${top_io io_read 3}$alignr${top_io io_write 3}
 
-${color} sda${alignr}${color}R ${color3}${diskio_read sda}  $color1${diskiograph_read sda 9, 90 333333 ffffff}
-${color3}${hddtemp /dev/sda}C${alignr}${color}W ${color3}${diskio_write sda}  $color1${diskiograph_write sda 9, 90 333333 ffffff}
+${color} sda${alignr}${color}R ${color0}${diskio_read sda}  $color1${diskiograph_read sda 9, 90 ff8c00 ff8c00}
+${color0}${hddtemp /dev/sda}C${alignr}${color}W ${color0}${diskio_write sda}  $color1${diskiograph_write sda 9, 90 ff8c00 ff8c00}
 
-${color} sdb${alignr}${color}R ${color3}${diskio_read sdb}  $color1${diskiograph_read sdb 9, 90 333333 ffffff}
-${color3}${hddtemp /dev/sdb}C${alignr}${color}W ${color3}${diskio_write sdb}  $color1${diskiograph_write sdb 9, 90 333333 ffffff}
+${color} sdb${alignr}${color}R ${color0}${diskio_read sdb}  $color1${diskiograph_read sdb 9, 90 ff8c00 ff8c00}
+${color0}${hddtemp /dev/sdb}C${alignr}${color}W ${color0}${diskio_write sdb}  $color1${diskiograph_write sdb 9, 90 ff8c00 ff8c00}
 
-${color}${font mono:size=10}${alignc}Network$font
+${color} sdc${alignr}${color}R ${color0}${diskio_read sdc}  $color1${diskiograph_read sdc 9, 90 ff8c00 ff8c00}
+${color0}${hddtemp /dev/sdc}C${alignr}${color}W ${color0}${diskio_write sdc}  $color1${diskiograph_write sdc 9, 90 ff8c00 ff8c00}
 
-${color}Connections ${color3}${tcp_portmon 1 65535 count} ${alignr}${color}Router ${if_existing /tmp/router_status ms}${color3}${head /tmp/router_status 1}${else}${color #ff0000}unreachable${endif}
-${color}br0 ${color3}${addrs br0}
-${color}Up ${alignr}${color3}${upspeed br0}  $color1${upspeedgraph br0 9, 90 333333 ffffff}
-${color}Down ${alignr}${color3}${downspeed br0}  $color1${downspeedgraph br0 9, 90 333333 ffffff}
+${color} sdd${alignr}${color}R ${color0}${diskio_read sdd}  $color1${diskiograph_read sdd 9, 90 ff8c00 ff8c00}
+${color0}${hddtemp /dev/sdd}C${alignr}${color}W ${color0}${diskio_write sdd}  $color1${diskiograph_write sdd 9, 90 ff8c00 ff8c00}
 
-${color}${font mono:size=10}${alignc}Portage$font
+${image ~/conky-icons/network.png -p 81,654 -s 25x25 }
 
-${color}Last sync    ${alignr}${color3}${execi 300 ~/scripts/lastsync days}    
-${color}Last update  ${alignr}${color3}${execi 300 ~/scripts/lastupdate days}    
 
-${if_mpd_playing}${color}${font mono:size=10}${alignc}MPD${font}
+${color}Connections ${color0}${tcp_portmon 1 65535 count}
+${color}Gateway ${alignr}${lua_parse router_ping_string} ${color1}${lua_graph router_ping 9,90 ff8c00 ff8c00}
 
-${alignc}${color3}${mpd_title}
-${color0}${mpd_bar 3, 190}
+${color}lan0 ${alignr}${color0}${addrs br0}
+${color}Up ${alignr}${color0}${upspeed lan0}  $color1${upspeedgraph lan0 9, 90 ff8c00 ff8c00}
+${color}Down ${alignr}${color0}${downspeed lan0}  $color1${downspeedgraph lan0 9, 90 ff8c00 ff8c00}
 
-$endif${execpi 60 transmission-status nil}
+${image ~/conky-icons/portage.png -p 80,764 -s 25x25 }
+
+
+${color}Last sync    ${alignr 40}${color0}${execi 300 ~/scripts/lastsync days}
+${color}Last update  ${alignr 40}${color0}${execi 300 ~/scripts/lastupdate days}
+
+${image ~/conky-icons/music.png -p 80,830 -s 25x25 }
+
+
+${if_mpd_playing}${alignc}${color0}${mpd_title}
+${color}${mpd_bar 3, 190}
+${else}${alignc}Not playing
+
+${endif}
+${image ~/conky-icons/torrents.png -p 80,895 -s 25x25 }
+
+
+${execpi 60 transmission-status nil}
+
