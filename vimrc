@@ -2,7 +2,7 @@
 set title hlsearch incsearch number showcmd ttyfast showmatch
 set modeline autoindent smartindent nocompatible wildmenu
 set mouse=a
-set pdev=MFC235C
+set pdev=Deskjet_3520
 set directory^=$HOME/.vim_tmp/
 set scrolloff=3
 set textwidth=0
