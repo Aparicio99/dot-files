@@ -58,6 +58,7 @@ COLOR[nop]="%F{green}"
 COLOR[nil]="%F{yellow}"
 COLOR[nexus]="%F{cyan}"
 COLOR[zero]="$(print '%{\033[38;5;202m%}')" # orange
+COLOR[nand]="$(print '%{\033[38;5;202m%}')" # orange
 
 if [ ! ${COLOR[$HOST]} ]; then
 	COLOR[$HOST]="%F{blue}"
