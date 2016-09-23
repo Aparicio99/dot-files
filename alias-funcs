@@ -8,7 +8,9 @@ alias -s {jpg,png,svg,xpm,bmp,gif}=gpicview
 ### Global Alias ###
 alias -g KEY='/etc/portage/package.keywords'
 alias -g USE='/etc/portage/package.use'
-alias -g NEW='/home/aparicio/Desktop/*(.oc[1])'
+alias -g NEW='/home/aparicio/Downloads/**/*(.oc[1])'
+alias -g NEW2='/home/aparicio/Downloads/**/*(.oc[2])'
+alias -g NEW3='/home/aparicio/Downloads/**/*(.oc[3])'
 alias -g WWW='/var/www/localhost/htdocs/'
 alias -g AUTO='--autounmask-write'
 alias -g V='| vim -'

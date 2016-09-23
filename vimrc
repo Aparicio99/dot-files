@@ -13,6 +13,8 @@ set spelllang=pt
 "set tabstop=4
 syntax on
 
+let g:vimtex_view_method='zathura'
+
 if version >= 703
 	set undofile
 	set undodir^=$HOME/.vim_tmp/
