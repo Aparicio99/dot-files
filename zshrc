@@ -51,6 +51,8 @@ eval $(dircolors)
 ##### Prompt #####
 export RPROMTP=""
 
+host_name=$(hostname -s)
+
 declare -A COLOR
 COLOR[void]="$(print '%{\033[38;5;239m%}')" # light gray
 COLOR[null]="%F{red}"
@@ -60,11 +62,11 @@ COLOR[nexus]="%F{cyan}"
 COLOR[zero]="$(print '%{\033[38;5;202m%}')" # orange
 COLOR[nand]="$(print '%{\033[38;5;202m%}')" # orange
 
-if [ ! ${COLOR[$HOST]} ]; then
-	COLOR[$HOST]="%F{blue}"
+if [ ! ${COLOR[$host_name]} ]; then
+	COLOR[$host_name]="%F{blue}"
 fi
 
-export PS1="%B${COLOR[$HOST]}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
+export PS1="%B${COLOR[$host_name]}%m %B%F{blue}%1~ %(?.%F{green}%(!.=%).:%)).%F{red}%(!.=(.:())%f%b "
 
 ##### Bindings #####
 bindkey '^V' edit-command-line # Ctrl+v
