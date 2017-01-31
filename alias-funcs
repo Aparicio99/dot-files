@@ -23,6 +23,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias wcalc='noglob wcalc --ints -EE'
 alias emerge='noglob emerge'
+alias ip="ip -c"
 
 ### Shortcuts ###
 alias l="ls"
