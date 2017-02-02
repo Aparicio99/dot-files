@@ -69,7 +69,7 @@ alias max="xbacklight -set 100 && 2000"
 
 ### Other ###
 alias http="python3 -m http.server 9999"
-alias weather="curl http://weather.noaa.gov/pub/data/observations/metar/decoded/LPPT.TXT"
+alias weather="curl http://wttr.in/"
 alias record="script -t 2> demo.timing -a demo.session"
 alias replay="scriptreplay demo.timing demo.session"
 alias 010="setxkbmap pt"
