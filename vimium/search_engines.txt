@@ -1,0 +1,6 @@
+w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
+l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...
+y: https://www.youtube.com/results?search_query=%s Youtube
+m: https://www.google.pt/maps?q=%s Google maps
+a: https://www.amazon.co.uk/s/?field-keywords=%s Amazon
+i: http://www.imdb.com/find?%s IMDB
