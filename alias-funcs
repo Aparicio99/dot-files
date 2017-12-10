@@ -95,7 +95,7 @@ usage()		{ du -skch $@ | sort -rh }
 unix2date()	{ date -ud@$@}
 date2unix()	{ date +%s --date="$@"}
 wiki()		{ dig +short txt $1.wp.dg.cx }
-avg()		{ echo "avg{$@}" | ised }
+avg()		{ echo "($@)/$#" | tr ' ' '+' | wcalc }
 cl()		{ cd $@; ls }
 
 base()		{ echo "obase=$2; ibase=$1; $3" | bc }
