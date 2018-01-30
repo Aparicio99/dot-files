@@ -1,11 +1,11 @@
 DEFAULT_SESSION="awesome"
 
-xset r rate 250 40 &
+source ~/.fehbg
+xset r rate 250 40
 xsetroot -cursor_name gentoo-silver
 xmodmap ~/.Xmodmap
-source ~/.fehbg
 
-if [ "$HOST" -eq "nop" ]; then
+if [ -x /usr/bin/xscreensaver ]; then
 	xscreensaver &
 fi
 
