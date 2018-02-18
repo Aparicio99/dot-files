@@ -1,4 +1,4 @@
-# Tab handling
+// Tab handling
 map d removeTab
 map u restoreTab
 map w nextTab
@@ -21,6 +21,7 @@ map S Vomnibar.activateInNewTab keyword=w
 # Quick open
 map , Marks.activateGotoMode
 map gna createTab https://www.amazon.co.uk
+map gne createTab https://www.amazon.es
 map gnf createTab https://www.facebook.com/
 map gnp createTab http://thepiratebay.org/
 map gnr createTab https://reddit.com/
