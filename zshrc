@@ -103,7 +103,7 @@ zstyle ':completion:*:*:*:default' menu select=3
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31' 
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 # Group matches and Describe
 zstyle ':completion:*:matches' group 'yes'
@@ -114,6 +114,8 @@ zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 zstyle ':completion:*:processes' command 'ps -au$USER'
 #zstyle ':completion:*:*:(pdf|zathura|epdfview|xpdf):*' file-patterns '*.pdf'
+
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
 # Command argument completion
 
