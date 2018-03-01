@@ -1,6 +1,9 @@
 " Settings
 set title hlsearch incsearch number showcmd ttyfast showmatch
-set modeline autoindent smartindent nocompatible wildmenu
+set modeline autoindent nocompatible wildmenu
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 set mouse=a
 set pdev=Deskjet_3520
 set directory^=$HOME/.vim_tmp/
