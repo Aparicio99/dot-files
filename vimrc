@@ -5,7 +5,7 @@ set cindent
 set cinkeys-=0#
 set indentkeys-=0#
 set mouse=a
-set pdev=Deskjet_3520
+set pdev=Default
 set directory^=$HOME/.vim_tmp/
 set scrolloff=3
 set textwidth=0
