@@ -1,6 +1,8 @@
 " Settings
 set title hlsearch incsearch number showcmd ttyfast showmatch
-set modeline autoindent nocompatible wildmenu
+set autoindent nocompatible wildmenu
+set modeline
+set secure
 set cindent
 set cinkeys-=0#
 set indentkeys-=0#
