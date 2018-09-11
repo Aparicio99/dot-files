@@ -5,7 +5,7 @@ URxvt*scrollBar: False
 URxvt*background: #000000
 URxvt*foreground: #FFFFFF
 URxvt*colorURL: #86a2be
-URxvt*font: xft:Source Code Pro:pixelsize=11
+URxvt*font: xft:Dejavu Sans Mono:pixelsize=12
 URxvt*termName: rxvt-unicode
 
 XTerm*background: black

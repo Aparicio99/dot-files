@@ -7,6 +7,7 @@ xmodmap ~/.Xmodmap
 
 if [ -x /usr/bin/xscreensaver ]; then
 	xscreensaver &
+	[ -x /usr/bin/xplanetFX ] && xplanetFX &>/dev/null &
 fi
 
 case $1 in
