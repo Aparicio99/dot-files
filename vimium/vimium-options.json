@@ -1,0 +1,26 @@
+{
+  "settingsVersion": "1.64",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Tab handling\nmap d removeTab\nmap u restoreTab\nmap w nextTab\nmap q previousTab\nmap < moveTabLeft\nmap > moveTabRight\n\n# URL handling\nmap o Vomnibar.activate\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <c-a> goNext\nmap <c-x> goPrevious\n\n# Search engines\nmap s Vomnibar.activateInNewTab keyword=g\nmap S Vomnibar.activateInNewTab keyword=w\n\n# Quick open\nmap , Marks.activateGotoMode\nmap gna createTab https://www.amazon.co.uk\nmap gne createTab https://www.amazon.es\nmap gnf createTab https://www.facebook.com/\nmap gnp createTab http://thepiratebay.org/\nmap gnr createTab https://reddit.com/\nmap gny createTab https://www.youtube.com/\nmap gnz createTab https://forum.zwame.pt/\n\n# Find\nmap / enterFindMode\nmap n performFind\nmap N performBackwardsFind\n\n# History\nmap b goBack\nmap <c-r> goForward\n\n#Other\nmap gs toggleViewSource",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\nl: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\ny: https://www.youtube.com/results?search_query=%s Youtube\nm: https://www.google.pt/maps?q=%s Google maps\na: https://www.amazon.co.uk/s/?field-keywords=%s Amazon\ni: http://www.imdb.com/find?%s IMDB",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
