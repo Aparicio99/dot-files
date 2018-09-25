@@ -105,6 +105,7 @@ alias dec2hex="base 10 16"
 alias hex2dec="base 16 10"
 
 pdf() {
+	local i
 	for i in $@; do
 		if [ -e $i ]; then
 			zathura $i 2>/dev/null&
@@ -115,6 +116,7 @@ pdf() {
 }
 
 freq() {
+	local cpu
 	for cpu in /sys/class/cpuid/*; do
 		echo ${1}000 > /sys/devices/system/cpu/$(basename $cpu)/cpufreq/scaling_setspeed
 	done
@@ -128,6 +130,7 @@ alias 3300="freq 3300"
 
 
 ..() {
+	local i j
 	for ((j=${1:-1},i=0;i<j;i++));do
 		builtin cd ..;
 	done;
@@ -140,8 +143,8 @@ alias ...=".. 2"
 alias ....=".. 3"
 
 youtube-mp3() {
-	url=$1
-	file=$(youtube-dl -s -e $url);
+	local url=$1
+	local file=$(youtube-dl -s -e $url);
 	echo "Downloading $file"
 	wget -q -O - `youtube-dl -b -g $url`| ffmpeg -i - -f mp3 -vn -acodec libmp3lame - > "$file.mp3"
 }
