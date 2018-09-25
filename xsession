@@ -1,13 +1,14 @@
 DEFAULT_SESSION="awesome"
 
-source ~/.fehbg
+[ -f ~/.fehbg ] && source ~/.fehbg
+type nm-applet && nm-applet &
 xset r rate 250 40
 xsetroot -cursor_name gentoo-silver
-xmodmap ~/.Xmodmap
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
-if [ -x /usr/bin/xscreensaver ]; then
-	xscreensaver &
-	[ -x /usr/bin/xplanetFX ] && xplanetFX &>/dev/null &
+if type xscreensaver; then
+	xscreensaver -no-splash &
+	type xplanetFX && xplanetFX &
 fi
 
 case $1 in
