@@ -160,3 +160,14 @@ if [[ -n "$PS1" && -d "/home/aparicio/.zsh-syntax-highlighting" ]]; then
 	ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
 	ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=cyan'
 fi
+
+function command_not_found_handler() {
+
+	if [[ $1 =~ ^[[:digit:]] ]]; then
+		echo $1 | wcalc
+	else
+		# Original behaviour
+		echo "zshrc: command not found: $@"
+		return 127
+	fi
+}
