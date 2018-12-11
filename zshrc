@@ -8,9 +8,7 @@ setopt autocd extendedglob correct nohup share_history hist_ignore_all_dups hist
 ##### External files #####
 source /etc/profile
 source $HOME/.alias-funcs
-if [ -f $HOME/.pvt-alias ]; then
-	source $HOME/.pvt-alias
-fi
+[ -f $HOME/.pvt-alias ] && source $HOME/.pvt-alias
 
 bindkey -e # Emacs mode
 
@@ -113,7 +111,6 @@ zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
 zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 zstyle ':completion:*:processes' command 'ps -au$USER'
-#zstyle ':completion:*:*:(pdf|zathura|epdfview|xpdf):*' file-patterns '*.pdf'
 
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
@@ -137,14 +134,8 @@ function complete_base() {
 	esac
 }
 
-function complete_freq() {
-	_values 'available frequencies' $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies \
-		| sed "s/^/{/" | sed "s/$/} \/ 1000/" | ised)
-}
-
 compdef complete_pk pk
 compdef complete_base base
-compdef complete_freq freq
 compdef pkill=killall
 compdef _services start stop restart toggle
 compdef _pdf pdf zathura epdfview
