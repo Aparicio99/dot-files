@@ -14,8 +14,8 @@ set textwidth=0
 set matchtime=2
 set laststatus=2
 set dictionary+=/usr/share/dict/words
-set spelllang=pt
-"set tabstop=4
+set spelllang=en
+set colorcolumn=80
 syntax on
 
 let g:vimtex_view_method='zathura'
@@ -60,6 +60,7 @@ nnoremap <F7> :Tab<CR>
 set t_Co=256
 colorscheme molokai
 hi ModeMsg ctermbg=green ctermfg=black
+hi ColorColumn ctermbg=black
 
 " Highlight extra white space
 highlight ExtraWhitespace ctermbg=darkgray guibg=lightgreen
