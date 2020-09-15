@@ -111,7 +111,7 @@ function! s:OpenSSLReadPost()
     if l:cipher == "bfa"
         let l:cipher = "bf -a"
     endif
-    let l:expr = "0,$!openssl " . l:cipher . " -d -salt -pass stdin -in " . expand("%")
+    let l:expr = "0,$!openssl " . l:cipher . " -d -salt -md md5 -pass stdin -in " . expand("%")
 
     set undolevels=-1
     let l:a = inputsecret("Password: ")
@@ -168,7 +168,7 @@ function! s:OpenSSLWritePre()
     if l:cipher == "bfa"
         let l:cipher = "bf -a"
     endif
-    let l:expr = "0,$!openssl " . l:cipher . " -e -salt -pass stdin"
+    let l:expr = "0,$!openssl " . l:cipher . " -e -salt -md md5 -pass stdin"
 
     let l:a  = inputsecret("       New password: ")
     let l:ac = inputsecret("Retype new password: ")
