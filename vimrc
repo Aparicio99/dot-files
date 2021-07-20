@@ -16,9 +16,11 @@ set laststatus=2
 set dictionary+=/usr/share/dict/words
 set spelllang=en
 set colorcolumn=80
+set wildmode=list,full
 syntax on
 
 let g:vimtex_view_method='zathura'
+let g:tex_flavor = 'latex'
 
 if version >= 703
 	set undofile
