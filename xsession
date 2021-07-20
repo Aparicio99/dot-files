@@ -1,3 +1,4 @@
+#!/bin/sh
 DEFAULT_SESSION="awesome"
 
 [ -f ~/.fehbg ] && source ~/.fehbg
@@ -8,20 +9,7 @@ xsetroot -cursor_name gentoo-silver
 
 if type xscreensaver; then
 	xscreensaver -no-splash &
-	type xplanetFX && xplanetFX &
+	#type xplanetFX && xplanetFX &
 fi
 
-case $1 in
-	openbox)
-		exec openbox-session
-		;;
-	awesome)
-		exec awesome
-		;;
-	dwm)
-		exec dwm
-		;;
-	*)
-		exec $DEFAULT_SESSION
-		;;
-esac
+exec dbus-launch --exit-with-session awesome
