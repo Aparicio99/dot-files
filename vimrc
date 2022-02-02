@@ -65,8 +65,9 @@ colorscheme molokai
 hi ModeMsg ctermbg=green ctermfg=black
 hi ColorColumn ctermbg=black
 
-" Enable spell check on git commit edits
+" Enable spell check on some filetypes
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
 
 " Highlight extra white space
 highlight ExtraWhitespace ctermbg=darkgray guibg=lightgreen
