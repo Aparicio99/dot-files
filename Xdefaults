@@ -1,12 +1,13 @@
 Xcursor.theme: gentoo-silver
 Xcursor.size: 24
 
-URxvt*scrollBar: False
-URxvt*background: #000000
-URxvt*foreground: #FFFFFF
-URxvt*colorURL: #86a2be
-URxvt*font: xft:Dejavu Sans Mono:pixelsize=12
-URxvt*termName: rxvt-unicode
+URxvt.scrollBar: False
+URxvt.background: #000000
+URxvt.foreground: #FFFFFF
+URxvt.colorURL: #86a2be
+URxvt.font: xft:Dejavu Sans Mono:pixelsize=12
+URxvt.termName: rxvt-unicode
+URxvt.perl-ext-common: resize-font
 
 XTerm*background: black
 XTerm*cursorColor: lightgrey
