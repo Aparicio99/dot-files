@@ -17,8 +17,6 @@ set dictionary+=/usr/share/dict/words
 set spelllang=en
 set colorcolumn=80
 set wildmode=longest,list,full
-"set listchars=tab:\|\\u202F,trail:\\u202F
-set listchars=tab:\|\\u202F,eol:$,nbsp:~,trail:X
 syntax on
 
 let g:vimtex_view_method='zathura'
@@ -103,7 +101,7 @@ endfunction
 let g:current_list_mode = 0
 function ToggleList()
 	if g:current_list_mode == 0
-		set list listchars=tab:\|\\u202F
+		set list listchars=tab:\|\ 
 		let g:current_list_mode=1
 
 	elseif g:current_list_mode == 1
