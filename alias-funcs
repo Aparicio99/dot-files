@@ -16,7 +16,7 @@ alias -g AUTO='--autounmask-write'
 alias -g V='| vim -'
 
 ### Replaces ###
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --group-directories-first"
 alias grep='grep --colour=auto'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -63,7 +63,7 @@ alias depends="equery depends"
 ### Hardware  ###
 alias writeiso="cdrecord -v -pad dev=/dev/cdrom"
 alias blankcd="cdrecord dev=/dev/cdrom blank=fast"
-alias bat="cat /sys/class/power_supply/BAT0/uevent"
+alias bat="cat /sys/class/power_supply/BAT*/uevent"
 alias min="xbacklight -set 0 && 1000"
 alias max="xbacklight -set 100 && 2000"
 
