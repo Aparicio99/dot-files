@@ -16,7 +16,9 @@ set laststatus=2
 set dictionary+=/usr/share/dict/words
 set spelllang=en
 set colorcolumn=80
-set wildmode=list,full
+set wildmode=longest,list,full
+"set listchars=tab:\|\\u202F,trail:\\u202F
+set listchars=tab:\|\\u202F,eol:$,nbsp:~,trail:X
 syntax on
 
 let g:vimtex_view_method='zathura'
@@ -40,12 +42,11 @@ command QA qa
 command Noh noh
 command Set set
 command Sudo w !sudo tee %
-command Tab set list! listchars=tab:>-
 
 " Binds
 let mapleader = ","
 
-map <C-N><C-N> :set invnumber<CR>
+map <C-N><C-N> :call ToggleLineNumbers()<CR>
 map <C-l><C-l> :call Togglestatus()<CR>
 map <leader>ss :setlocal spell!<cr>
 map <Tab> <C-W>w
@@ -56,7 +57,7 @@ inoremap jj <ESC>
 nnoremap <leader> y yyp
 nnoremap <F5> :TlistToggle<CR>
 nnoremap <F6> :GundoToggle<CR>
-nnoremap <F7> :Tab<CR>
+nnoremap <F7> :call ToggleList()<CR>
 
 " Colors
 set t_Co=256
@@ -78,5 +79,35 @@ function Togglestatus()
 		set laststatus=1
 	else
 		set laststatus=2
+	endif
+endfunction
+
+" Toggle line numbers mode
+function ToggleLineNumbers()
+	if &number
+		if &relativenumber
+			set nonumber
+			set norelativenumber
+		else
+			set relativenumber
+		endif
+	else
+		set number
+	endif
+endfunction
+
+let g:current_list_mode = 0
+function ToggleList()
+	if g:current_list_mode == 0
+		set list listchars=tab:\|\\u202F
+		let g:current_list_mode=1
+
+	elseif g:current_list_mode == 1
+		set list listchars=tab:\|-,eol:$,nbsp:~,trail:X
+		let g:current_list_mode = 2
+
+	elseif g:current_list_mode == 2
+		set list!
+		let g:current_list_mode = 0
 	endif
 endfunction
