@@ -1,10 +1,8 @@
 #!/bin/sh
-DEFAULT_SESSION="awesome"
 
 [ -f ~/.fehbg ] && source ~/.fehbg
 type nm-applet && nm-applet &
 xset r rate 250 40
-xsetroot -cursor_name gentoo-silver
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 if type xscreensaver; then
@@ -12,4 +10,8 @@ if type xscreensaver; then
 	#type xplanetFX && xplanetFX &
 fi
 
-exec dbus-launch --exit-with-session awesome
+if grep ubuntu /etc/os-release >/dev/null; then
+	exec awesome
+else
+	exec dbus-launch --exit-with-session awesome
+fi
