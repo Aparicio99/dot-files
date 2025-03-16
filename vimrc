@@ -19,6 +19,8 @@ set colorcolumn=80
 set wildmode=longest,list,full
 syntax on
 
+set noerrorbells visualbell t_vb=
+
 let g:vimtex_view_method='zathura'
 let g:tex_flavor = 'latex'
 
@@ -54,7 +56,7 @@ inoremap jj <ESC>
 
 nnoremap <leader> y yyp
 nnoremap <F5> :TlistToggle<CR>
-nnoremap <F6> :GundoToggle<CR>
+nnoremap <F6> :UndotreeToggle<CR>
 nnoremap <F7> :call ToggleList()<CR>
 
 " Colors
@@ -66,6 +68,7 @@ hi ColorColumn ctermbg=black
 " Enable spell check on some filetypes
 autocmd FileType gitcommit setlocal spell
 autocmd FileType markdown setlocal spell
+autocmd FileType man set nonumber
 
 " Highlight extra white space
 highlight ExtraWhitespace ctermbg=darkgray guibg=lightgreen
