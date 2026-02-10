@@ -6,13 +6,10 @@ alias -s {odt,doc,rtf}=oowriter
 alias -s {jpg,png,svg,xpm,bmp,gif}=gpicview
 
 ### Global Alias ###
-alias -g KEY='/etc/portage/package.keywords'
-alias -g USE='/etc/portage/package.use'
 alias -g NEW='/home/aparicio/Downloads/**/*(.oc[1])'
 alias -g NEW2='/home/aparicio/Downloads/**/*(.oc[2])'
 alias -g NEW3='/home/aparicio/Downloads/**/*(.oc[3])'
-alias -g WWW='/var/www/localhost/htdocs/'
-alias -g AUTO='--autounmask-write'
+alias -g SCAN='/mnt/storage/scans/*(.oc[1])'
 alias -g V='| vim -'
 
 ### Replaces ###
@@ -75,7 +72,7 @@ alias replay="scriptreplay demo.timing demo.session"
 alias 010="setxkbmap pt"
 alias zshrc="source ~/.zshrc"
 alias tcp="lsof -i tcp"
-alias rcp="rsync --archive --one-file-system --hard-links --human-readable --inplace --numeric-ids --delete --delete-excluded --progress --compress"
+alias rcp="rsync --archive --xattrs --one-file-system --hard-links --human-readable --inplace --numeric-ids --delete --delete-excluded --progress --compress"
 alias drop_caches="echo 3 > /proc/sys/vm/drop_caches"
 alias distc-monitor="DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text 1"
 alias rdp="rdesktop -k pt -u virtual -p -"
@@ -140,4 +137,3 @@ warn() {
 	$@
 	notify-send-wrapper -t 0 "##### Command Done #####"  "\n$*\n"
 }
-alias -g W="warn"
